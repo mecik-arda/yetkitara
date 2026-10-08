@@ -1,0 +1,29 @@
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Bağımlılıkları kur
+        run: pip install -e ".[test]"
+      - name: Testleri çalıştır
+        run: python -m unittest discover -s tests -v
+      - name: Kod biçimi denetimi
+        run: ruff check .
+      - name: Temiz örnek yüksek önem üretmemeli
+        run: python -m yetkitara.cli tara ornekler/temiz.json --esik yuksek
+      - name: Riskli örnek kural tetiklemeli
+        run: |
+          python -m yetkitara.cli tara ornekler/riskli.json --esik yuksek || test $? -eq 1

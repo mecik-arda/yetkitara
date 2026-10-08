@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yetkitara"
+version = "0.1.0"
+description = "Ajan sistem promptu ile arac semasi arasindaki yetki sozlesmesi denetcisi"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "Arda Mecik" }]
+keywords = [
+    "ai-security",
+    "llm-security",
+    "agent-security",
+    "mcp-security",
+    "least-privilege",
+    "turkce",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Security",
+]
+
+[project.scripts]
+yetkitara = "yetkitara.cli:main"
+
+[project.optional-dependencies]
+test = [
+    "ruff>=0.6",
+]
+
+[project.urls]
+Homepage = "https://github.com/mecik-arda/yetkitara"
+Issues = "https://github.com/mecik-arda/yetkitara/issues"
+
+[tool.setuptools]
+packages = ["yetkitara"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = ["B008"]

@@ -1,0 +1,36 @@
+{
+  "_aciklama": "Temiz sözleşme: rol beyanı yeteneklerle hizalı, tüm araçlar gerçekten salt okur, araçlar eksiksiz şemalandırılmış.",
+  "sistem_promptu": "Sen bir veri analisti. Salt okur modunda çalış: hiçbir kaydı silme veya değiştirme. Yalnızca analiz yap ve bulguları yanıtında raporla.",
+  "araclar": [
+    {
+      "name": "satirlari_listele",
+      "description": "Verilen proje kapsamındaki satırları listeler. Yalnızca okuma işlemi.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "proje_id": { "type": "string" },
+          "limit": { "type": "integer" }
+        },
+        "required": ["proje_id"]
+      }
+    },
+    {
+      "name": "kolonlari_getir",
+      "description": "Verilen projedeki kolon adlarını ve türlerini döndürür. Yalnızca okuma işlemi.",
+      "inputSchema": {
+        "type": "object",
+        "properties": { "proje_id": { "type": "string" } },
+        "required": ["proje_id"]
+      }
+    },
+    {
+      "name": "istatistik_hesapla",
+      "description": "Verilen proje satırları üzerinde istatistik hesaplar ve sonucu döndürür. Sistem durumunu değiştirmez.",
+      "inputSchema": {
+        "type": "object",
+        "properties": { "proje_id": { "type": "string" }, "limit": { "type": "integer" } },
+        "required": ["proje_id"]
+      }
+    }
+  ]
+}

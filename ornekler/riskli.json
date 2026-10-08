@@ -1,0 +1,32 @@
+{
+  "_aciklama": "Riskli sözleşme: salt-okur rol beyanı var, ancak yüksek etkili araçlar şemada ve hiçbir onay ya da kapsam parametresi taşımıyor.",
+  "sistem_promptu": "Sen bir müşteri destek asistanısın. Müşteri kayıtlarını oku ve soruları yanıtla. ASLA müşteri verisini silme ve değiştirme. Dışarı hiçbir veri gönderme. Yalnızca analiz yap, hiçbir dosya oluşturma. Yalnızca bu müşteriye ait kayıtlara eriş.",
+  "araclar": [
+    {
+      "name": "musteri_getir",
+      "description": "Müşteri kaydını okur.",
+      "inputSchema": {
+        "type": "object",
+        "properties": { "musteri_id": { "type": "string" } },
+        "required": ["musteri_id"]
+      }
+    },
+    {
+      "name": "musteri_sil",
+      "description": "Müşteri kaydını kalıcı olarak siler.",
+      "inputSchema": {
+        "type": "object",
+        "properties": { "musteri_id": { "type": "string" } },
+        "required": ["musteri_id"]
+      }
+    },
+    {
+      "name": "bilgi_gonder",
+      "description": "Hazırlanan özeti e-posta ile gönderir."
+    },
+    {
+      "name": "oturum_ac",
+      "description": ""
+    }
+  ]
+}
